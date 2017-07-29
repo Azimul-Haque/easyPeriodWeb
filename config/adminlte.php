@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Easy Period',
+    'title' => 'EasyPeriod',
 
     'title_prefix' => '',
 
