@@ -22,7 +22,11 @@
         <link rel="stylesheet" href="//cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.css">
     @endif
 
+    <!--this is loaded for the calender! :/ -->
+    <!--this is loaded for the calender! :/ -->
+    <script src="{{ asset('vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     @yield('adminlte_css')
+    
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -33,7 +37,8 @@
 
 @yield('body')
 
-<script src="{{ asset('vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<!--JQUERY is loaded at upper section for the calender! :/ -->
+<!--JQUERY is loaded at upper section for the calender! :/ -->
 <script src="{{ asset('vendor/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables -->
