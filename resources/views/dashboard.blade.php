@@ -6,14 +6,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    
     {{-- custom css for tthe calender --}}
     {!!Html::style('css/custom-calender.css')!!}
-    {!!Html::style('css/datepicker.css')!!}
+    {!!Html::style('css/bootstrap-datepicker.min.css')!!}
+    {!!Html::style('css/stylesheet.css')!!}
 @endsection
 
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Dashboard | {{ $user->name }} {{ $periods->count() }}</h1>
 @stop
 
 @section('content')
@@ -29,6 +31,10 @@
                     {!! Form::text('description', '', ['placeholder'=>'Description (Optional)', 'class' => 'form-control']) !!}<br/>
                     <button type="submit" class="btn btn-flat btn-success btn-block">Save</button>
                 {!! Form::close() !!}      
+            </div><br/>
+
+            <div>
+                there will be a 'Stacked Progress Bars' here showing the redzone
             </div>
     	</div>
     	<div class="col-sm-6">
@@ -41,15 +47,17 @@
 @stop
 
 @section('js')
-    {!!Html::script('js/bootstrap-datepicker.js')!!}
+    {!!Html::script('js/bootstrap-datepicker.min.js')!!}
     <script type="text/javascript">
         $('#datepicker1').datepicker({
             format: 'yyyy-mm-dd',
-            startDate: '-3d'
+            autoclose: true,
+            todayHighlight: true,
         });
         $('#datepicker2').datepicker({
             format: 'yyyy-mm-dd',
-            startDate: '-3d'
+            autoclose: true,
+            todayHighlight: true,
         });
     </script>
 @endsection

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+use App\Period;
+use App\User;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
+use Validator, Input, Redirect, Session;
 
 class PeriodController extends Controller
 {
@@ -26,17 +29,19 @@ class PeriodController extends Controller
      */
     public function index() {
 
-        $username = Auth::user();
+        $user = Auth::user();
+
+        $periods = Period::where('user_id','=',Auth::user()->id)->get();
 
         $events = [];
         
-        for($i = 1; $i<10; $i++) {
+        foreach($periods as $period){
             $events[] = \Calendar::event(
-                "",      //event title
-                true,    //full day event?
-                '2017-0'.$i.'-27', 
-                '2017-0'.$i.'-30', 
-                $i
+                $period->description,      //event title
+                false,    //full day event?
+                $period->start, 
+                $period->end.'T23:59:00',
+                $period->id
             );
         }
 
@@ -48,8 +53,9 @@ class PeriodController extends Controller
                     ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
         ]); 
 
-        return view('home')
-                    ->withUser($username)
+        return view('dashboard')
+                    ->withUser($user)
+                    ->withPeriods($periods)
                     ->withCalendar($calendar);
     }
 
@@ -71,7 +77,27 @@ class PeriodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $this->validate($request, array(
+            'start'       => 'required|date_format:Y-m-d',
+            'end'         => 'required|date_format:Y-m-d',
+            'description' => 'sometimes|max:1000'
+        ));
+
+        //store to DB
+        $period = new Period;
+
+        $period->user_id = Auth::user()->id;
+        $period->start = $request->start;
+        $period->end = $request->end;
+        $period->description = $request->description;
+
+        $period->save();
+
+        Session::flash('success', 'The time entry is saved successfully!'); 
+
+        //redirect
+        return redirect()->route('dashboard.index');
     }
 
     /**

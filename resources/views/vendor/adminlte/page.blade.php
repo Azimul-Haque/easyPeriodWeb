@@ -124,7 +124,7 @@
 
             <!-- Main content -->
             <section class="content">
-
+                @include('partials._messages')
                 @yield('content')
 
             </section>
