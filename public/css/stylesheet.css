@@ -174,9 +174,7 @@ ul.errorlist > li {
 
 
 .progress, .progress>.progress-bar, .progress .progress-bar, .progress>.progress-bar .progress-bar {
-    border-radius: 0px;
+    border-radius: 0px !important;
 }
 
-.progress-bar {
-    border: 1px solid #f00;
-}
+

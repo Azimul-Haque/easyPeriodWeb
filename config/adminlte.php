@@ -111,14 +111,14 @@ return [
 
         'MAIN NAVIGATION',
         [
-            'text'    => 'Pages',
+            'text'    => 'Dashboard',
             'route'   => 'dashboard.index',
-            'icon'    => 'file',
+            'icon'    => 'dashboard',
         ],
         [
             'text'    => 'Period List',
             'route'   => 'dashboard.periodlist',
-            'icon'    => 'list',
+            'icon'    => 'table',
         ],
         'ACCOUNT SETTINGS',
         [

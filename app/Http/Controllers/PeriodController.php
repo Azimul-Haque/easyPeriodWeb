@@ -40,7 +40,7 @@ class PeriodController extends Controller
                 $period->description,      //event title
                 false,    //full day event?
                 $period->start, 
-                $period->end.'T23:59:00',
+                $period->end,
                 $period->id
             );
         }
@@ -97,7 +97,7 @@ class PeriodController extends Controller
 
         $period->user_id = Auth::user()->id;
         $period->start = $request->start;
-        $period->end = $request->end;
+        $period->end = $request->end.' 23:59:00';
         $period->description = $request->description;
 
         $period->save();

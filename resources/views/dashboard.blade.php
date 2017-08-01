@@ -34,18 +34,20 @@
             </div><br/>
 
             <div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:10%">
-                      
+                @foreach($periods as $period)
+                    <div class="progress-group">
+                        <span class="progress-text">July 2017</span>
+                        <span class="progress-number">
+                        <b>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }}</b> days</span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-info" style="width:10%"></div>
+                            <div class="progress-bar progress-bar-period" style="width:10%"></div>
+                            <div class="progress-bar progress-bar-info" style="width:80%"></div>
+                        </div>
                     </div>
-                    <div class="progress-bar progress-bar-period" role="progressbar" style="width:10%">
-                      
-                    </div>
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:80%">
-                      
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            </div><br/>
+            take a look: https://adminlte.io/themes/AdminLTE/index2.html
     	</div>
     	<div class="col-sm-6">
     		<div style="background: #fff !important;">
