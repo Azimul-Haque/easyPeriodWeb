@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::auth();
 
 Route::resource('dashboard', 'PeriodController');
+
+Route::get('periodlist', ['as' => 'dashboard.periodlist', 'uses' => 'PeriodController@getPeriodList']);

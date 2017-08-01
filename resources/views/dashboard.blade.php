@@ -34,7 +34,17 @@
             </div><br/>
 
             <div>
-                there will be a 'Stacked Progress Bars' here showing the redzone
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:10%">
+                      
+                    </div>
+                    <div class="progress-bar progress-bar-period" role="progressbar" style="width:10%">
+                      
+                    </div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:80%">
+                      
+                    </div>
+                </div>
             </div>
     	</div>
     	<div class="col-sm-6">

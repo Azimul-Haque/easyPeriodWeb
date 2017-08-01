@@ -59,6 +59,14 @@ class PeriodController extends Controller
                     ->withCalendar($calendar);
     }
 
+    public function getPeriodList() {
+
+        $periods = Period::where('user_id','=',Auth::user()->id)->get();
+        
+
+        return view('periodlist')->withPeriods($periods);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -168,3 +168,15 @@ ul.errorlist > li {
     height: auto;
 }*/
 
+.progress-bar-period {
+    background-color: #f00;
+}
+
+
+.progress, .progress>.progress-bar, .progress .progress-bar, .progress>.progress-bar .progress-bar {
+    border-radius: 0px;
+}
+
+.progress-bar {
+    border: 1px solid #f00;
+}
