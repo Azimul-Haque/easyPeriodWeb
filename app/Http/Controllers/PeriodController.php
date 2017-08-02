@@ -61,7 +61,9 @@ class PeriodController extends Controller
 
     public function getPeriodList() {
 
-        $periods = Period::where('user_id','=',Auth::user()->id)->get();
+        $periods = Period::where('user_id','=',Auth::user()->id)
+                           ->orderBy('start', 'asc')
+                           ->get();
         
 
         return view('periodlist')->withPeriods($periods);

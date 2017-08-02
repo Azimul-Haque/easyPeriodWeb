@@ -36,7 +36,15 @@
             <div>
                 @foreach($periods as $period)
                     <div class="progress-group">
-                        <span class="progress-text">July 2017</span>
+                        <span class="progress-text">
+                            @if(date('m', strtotime($period->start)) == date('m', strtotime($period->end)))
+                                {{ date('F', strtotime($period->start)) }}, {{ date('Y', strtotime($period->start)) }}
+                            @else
+                                {{ date('F', strtotime($period->start)) }}, {{ date('Y', strtotime($period->start)) }}
+                                -
+                                {{ date('F', strtotime($period->end)) }}, {{ date('Y', strtotime($period->end)) }}
+                            @endif
+                        </span>
                         <span class="progress-number">
                         <b>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }}</b> days</span>
                         <div class="progress sm">
