@@ -25,3 +25,6 @@ Route::get('periodlist', ['as' => 'dashboard.periodlist', 'uses' => 'PeriodContr
 // user routess
 Route::get('settings/profile', ['as' => 'settings.profile', 'uses' => 'UserController@getProfile']);
 Route::put('settings/profile/{id}', ['as' => 'settings.profile.update', 'uses' => 'UserController@updateProfile']);
+
+Route::get('settings/password', ['as' => 'settings.password', 'uses' => 'UserController@getPassword']);
+Route::put('settings/password/{id}', ['as' => 'settings.password.update', 'uses' => 'UserController@updatePassword']);

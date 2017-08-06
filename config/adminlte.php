@@ -128,7 +128,7 @@ return [
         ],
         [
             'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'route'  => 'settings.password',
             'icon' => 'lock',
         ],
         [

@@ -27,7 +27,7 @@
 	    <strong>Success!</strong> {{Session::get('success')}}
 	</div> --}}
 	<script type="text/javascript">
-		toastr.success('{{Session::get('success')}}', 'SUCCESS');
+		toastr.success('{{Session::get('success')}}', 'SUCCESS').css('width','400px');
 	</script>
 @endif
 
@@ -44,7 +44,7 @@
 	</div> --}}
 	@foreach ($errors->all() as $error)
 	    <script type="text/javascript">
-			toastr.error('{{ $error }}', 'ERROR');
+			toastr.error('{{ $error }}', 'ERROR').css('width','400px');
 		</script>
 	@endforeach	
 @endif
@@ -55,13 +55,13 @@
         {{ session('info') }}
     </div> --}}
     <script type="text/javascript">
-		toastr.info('{{ session('info') }}', 'INFO');
+		toastr.info('{{ session('info') }}', 'INFO').css('width','400px');
 	</script>
 @endif
 
 @if(session('warning'))
     <script type="text/javascript">
-		toastr.warning('{{ session('warning') }}', 'WARNING');
+		toastr.warning('{{ session('warning') }}', 'WARNING').css('width','400px');
 	</script>
 @endif
 

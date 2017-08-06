@@ -19,20 +19,22 @@ class UserController extends Controller
 
     public function getProfile() {
 
-    	$user = Auth::user();
+        $user = Auth::user();
 
-    	return view('user.index')
+        return view('user.index')
                     ->withUser($user);
 
     }
 
     public function updateProfile(Request $request, $id) {
-        $updateUser = User::find($id);
+        
         //validation
         $this->validate($request, array(
                'name'     => 'required|max:500',
         ));
-    	
+        
+        $updateUser = User::find($id);
+
         $updateUser->name = $request->name;
         $updateUser->save(); 
         
@@ -40,6 +42,35 @@ class UserController extends Controller
                                   
         //redirect
         return redirect()->route('settings.profile');
+    }
+
+    public function getPassword() {
+
+        $user = Auth::user();
+
+    	return view('user.password')->withUser($user);
+
+    }
+
+    public function updatePassword(Request $request, $id) {
+        
+        //validation
+        $this->validate($request, array(
+            'password'              => 'required|min:6|confirmed',
+            'password_confirmation' => 'required',
+       ));
+
+
+        // update to DB
+        $user = User::find($id);
+
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        Session::flash('success', 'Password is updated successfully!');
+
+        //redirect
+        return redirect()->route('settings.password');
     }
 
 }
