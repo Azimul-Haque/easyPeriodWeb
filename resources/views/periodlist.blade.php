@@ -2,9 +2,9 @@
 
 @section('title', 'Easy Period')
 
-@section('css')   
-    {!!Html::style('css/stylesheet.css')!!}
+@section('css')
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+    {!!Html::style('css/stylesheet.css')!!}
 @endsection
 
 
@@ -16,7 +16,7 @@
     <div class="row">
     	<div class="col-sm-6">
             <div class="table-responsive well">
-                <table class="table table-striped table-bordered table-condensed" id="period_table">
+                <table class="table table-striped table-condensed table-hover" id="period_table">
                     <thead>
                         <tr>
                             <th>Date Start</th>
@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{ date('F d, Y', strtotime($period->start)) }}</td>
                             <td>{{ date('F d, Y', strtotime($period->end)) }}</td>
-                            <td>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }} days</td>
+                            <td><span class="badge bg-red">{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }} days</span></td>
                         </tr>
                         @endforeach
                     </tbody>

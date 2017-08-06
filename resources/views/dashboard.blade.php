@@ -15,13 +15,14 @@
 
 
 @section('content_header')
-    <h1>Dashboard | {{ $user->name }} {{ $periods->count() }}</h1>
+    <h1>Dashboard | {{ $user->name }}</h1>
 @stop
 
 @section('content')
     <div class="row">
     	<div class="col-sm-6">
     		<div class="well">
+                <p class="text-muted">Record a new started period...</p>
                 {!! Form::open(['route' => 'dashboard.store', 'method' => 'POST']) !!}
                     <div class="input-group input-daterange">
                         {!! Form::text('start', '', ['id' => 'datepicker1', 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'']) !!}
@@ -33,25 +34,36 @@
                 {!! Form::close() !!}      
             </div><br/>
 
+
+            <!-- Stacked Progress Bar -->
             <div>
                 @foreach($periods as $period)
                     <div class="progress-group">
-                        <span class="progress-text">
-                            @if(date('m', strtotime($period->start)) == date('m', strtotime($period->end)))
+                        @if(date('m', strtotime($period->start)) == date('m', strtotime($period->end)))
+                            <span class="progress-text">
                                 {{ date('F', strtotime($period->start)) }}, {{ date('Y', strtotime($period->start)) }}
-                            @else
+                            </span>
+                            <span class="progress-number">
+                            <b>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }}</b> days</span>
+                            <div class="progress sm">
+                                <div class="progress-bar progress-bar-info" style="width:{{ (date('d', strtotime($period->start)) - 1) * 3.3333 }}%"></div>
+                                <div class="progress-bar progress-bar-period" style="width:{{ (Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1) * 3.3333 }}%"></div>
+                                <div class="progress-bar progress-bar-info" style="width:{{ 100 - (((date('d', strtotime($period->start)) - 1) * 3.3333) + ((Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1) * 3.3333)) }}%"></div>
+                            </div>
+                        @else
+                            <span class="progress-text">
                                 {{ date('F', strtotime($period->start)) }}, {{ date('Y', strtotime($period->start)) }}
                                 -
                                 {{ date('F', strtotime($period->end)) }}, {{ date('Y', strtotime($period->end)) }}
-                            @endif
-                        </span>
-                        <span class="progress-number">
-                        <b>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }}</b> days</span>
-                        <div class="progress sm">
-                            <div class="progress-bar progress-bar-info" style="width:10%"></div>
-                            <div class="progress-bar progress-bar-period" style="width:10%"></div>
-                            <div class="progress-bar progress-bar-info" style="width:80%"></div>
-                        </div>
+                            </span>
+                            <span class="progress-number">
+                            <b>{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }}</b> days</span>
+                            <div class="progress sm">
+                                <div class="progress-bar progress-bar-info" style="width:10%"></div>
+                                <div class="progress-bar progress-bar-period" style="width:10%"></div>
+                                <div class="progress-bar progress-bar-info" style="width:80%"></div>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div><br/>

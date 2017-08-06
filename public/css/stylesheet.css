@@ -74,7 +74,6 @@ ul.errorlist > li {
 }
 
 .text-muted {
-    margin: 20px 0;
     color: #777;
 }
 .well {
@@ -177,4 +176,14 @@ ul.errorlist > li {
     border-radius: 0px !important;
 }
 
+.table>thead>tr>th {
+    border-bottom: 2px solid #ddd;
+}
 
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border-top: 1px solid #ddd;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
