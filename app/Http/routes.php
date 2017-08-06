@@ -20,3 +20,8 @@ Route::auth();
 Route::resource('dashboard', 'PeriodController');
 
 Route::get('periodlist', ['as' => 'dashboard.periodlist', 'uses' => 'PeriodController@getPeriodList']);
+
+
+// user routess
+Route::get('settings/profile', ['as' => 'settings.profile', 'uses' => 'UserController@getProfile']);
+Route::put('settings/profile/{id}', ['as' => 'settings.profile.update', 'uses' => 'UserController@updateProfile']);

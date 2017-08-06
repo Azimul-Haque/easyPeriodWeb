@@ -16,7 +16,7 @@
     <div class="row">
     	<div class="col-sm-6">
             <div class="table-responsive well">
-                <table class="table table-striped table-condensed table-hover" id="period_table">
+                <table class="table table-condensed table-hover" id="period_table">
                     <thead>
                         <tr>
                             <th>Date Start</th>

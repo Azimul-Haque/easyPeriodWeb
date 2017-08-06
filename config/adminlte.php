@@ -123,7 +123,7 @@ return [
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'route'  => 'settings.profile',
             'icon' => 'user',
         ],
         [
