@@ -39,7 +39,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Password</div>
                 <div class="panel-body">
-                    Lasr modification date: {{ $user->updated_at }}
+                    Last modification date: {{ $user->updated_at }}
                 </div>
             </div>
             
