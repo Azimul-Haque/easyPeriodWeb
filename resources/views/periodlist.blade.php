@@ -22,6 +22,7 @@
                             <th>Date Start</th>
                             <th>Date End</th>
                             <th>Date Duration</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,30 @@
                             <td>{{ date('F d, Y', strtotime($period->start)) }}</td>
                             <td>{{ date('F d, Y', strtotime($period->end)) }}</td>
                             <td><span class="badge bg-red">{{  Carbon::parse($period->start)->diffInDays(Carbon::parse($period->end)) + 1 }} days</span></td>
+                            <td>
+                                {{-- edit modal--}}
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editModal{{ $period->id }}" data-backdrop="static"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <!-- Trigger the modal with a button -->
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="editModal{{ $period->id }}" role="dialog">
+                                    <div class="modal-dialog modal-md">
+                                      <div class="modal-content">
+                                        <div class="modal-header modal-header-primary">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Edit your period between <b>{{ date('F d, Y', strtotime($period->start)) }}-{{ date('F d, Y', strtotime($period->end)) }}</b></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>This is a small modal.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  {{-- edit modal--}}
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -21,17 +21,21 @@
 @section('content')
     <div class="row">
     	<div class="col-sm-6">
-    		<div class="well">
-                <p class="text-muted">Record a new started period...</p>
-                {!! Form::open(['route' => 'dashboard.store', 'method' => 'POST']) !!}
-                    <div class="input-group input-daterange">
-                        {!! Form::text('start', '', ['id' => 'datepicker1', 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'']) !!}
-                        <div class="input-group-addon">to</div>
-                        {!! Form::text('end', '', ['id' => 'datepicker2', 'placeholder'=>'End', 'class' => 'form-control', 'required'=>'']) !!}
-                    </div><br/>
-                    {!! Form::text('description', '', ['placeholder'=>'Description (Optional)', 'class' => 'form-control']) !!}<br/>
-                    <button type="submit" class="btn btn-flat btn-success btn-block">Save</button>
-                {!! Form::close() !!}      
+    		<div class="panel panel-success">
+                <div class="panel-heading">
+                    Record a new started period...
+                </div>
+                <div class="panel-body">
+                    {!! Form::open(['route' => 'dashboard.store', 'method' => 'POST']) !!}
+                        <div class="input-group input-daterange">
+                            {!! Form::text('start', '', ['id' => 'datepicker1', 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'']) !!}
+                            <div class="input-group-addon">to</div>
+                            {!! Form::text('end', '', ['id' => 'datepicker2', 'placeholder'=>'End', 'class' => 'form-control', 'required'=>'']) !!}
+                        </div><br/>
+                        {!! Form::text('description', '', ['placeholder'=>'Description (Optional)', 'class' => 'form-control']) !!}<br/>
+                        <button type="submit" class="btn btn-flat btn-success btn-block">Save</button>
+                    {!! Form::close() !!}   
+                </div>   
             </div><br/>
 
 
