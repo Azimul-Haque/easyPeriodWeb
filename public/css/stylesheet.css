@@ -194,3 +194,7 @@ ul.errorlist > li {
     border-bottom:1px solid #eee;
     background-color: #428bca;
 }
+
+.margin-top {
+    margin-top: 20px;
+}

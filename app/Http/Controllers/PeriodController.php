@@ -141,7 +141,27 @@ class PeriodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation
+        $this->validate($request, array(
+            'start'       => 'required|date_format:Y-m-d',
+            'end'         => 'required|date_format:Y-m-d',
+            'description' => 'sometimes|max:1000'
+        ));
+
+        //store to DB
+        $period = Period::find($id);
+
+        $period->user_id = Auth::user()->id;
+        $period->start = $request->start;
+        $period->end = $request->end.' 23:59:00';
+        $period->description = $request->description;
+
+        $period->save();
+
+        Session::flash('success', 'The time entry is updated successfully!'); 
+
+        //redirect
+        return redirect()->route('dashboard.periodlist');
     }
 
     /**

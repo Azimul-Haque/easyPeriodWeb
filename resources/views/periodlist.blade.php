@@ -4,6 +4,7 @@
 
 @section('css')
     <link media="all" type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+    {!!Html::style('css/bootstrap-datepicker.min.css')!!}
     {!!Html::style('css/stylesheet.css')!!}
 @endsection
 
@@ -43,15 +44,38 @@
                                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                                           <h4 class="modal-title">Edit your period between <b>{{ date('F d, Y', strtotime($period->start)) }}-{{ date('F d, Y', strtotime($period->end)) }}</b></h4>
                                         </div>
+                                        {!! Form::model($period, ['route' => ['dashboard.update', $period->id], 'method' => 'PUT']) !!}
                                         <div class="modal-body">
-                                          <p>This is a small modal.</p>
+                                            <div class="input-group input-daterange col-sm-12">
+                                                {!! Form::text('start', null, ['id' => 'datepicker1'.$period->id, 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'']) !!}
+                                                <div class="input-group-addon">to</div>
+                                                {!! Form::text('end', null, ['id' => 'datepicker2'.$period->id, 'placeholder'=>'End', 'class' => 'form-control', 'required'=>'']) !!}
+                                            </div><br/>
+                                            <div class="input-group col-sm-12">
+                                                {!! Form::text('description', null, ['placeholder'=>'Description (Optional)', 'class' => 'form-control margin-top']) !!}
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn  btn-success">Save</button>
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                         </div>
+                                        {!! Form::close() !!}
                                       </div>
                                     </div>
                                   </div>
+                                    {!!Html::script('js/bootstrap-datepicker.min.js')!!}
+                                    <script type="text/javascript">
+                                        $('#datepicker1{{ $period->id }}').datepicker({
+                                            format: 'yyyy-mm-dd',
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                        });
+                                        $('#datepicker2{{ $period->id }}').datepicker({
+                                            format: 'yyyy-mm-dd',
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                        });
+                                    </script>
                                   {{-- edit modal--}}
                                 <button class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
@@ -77,6 +101,5 @@
         });
     </script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>    
 @endsection
