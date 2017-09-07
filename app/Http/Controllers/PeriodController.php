@@ -172,6 +172,16 @@ class PeriodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // find the specific period
+        $period = Period::find($id);
+
+        // isDeleted will be implemented soon...
+
+        $period->delete();
+
+        Session::flash('success', 'The time entry is deleted permanently!'); 
+
+        //redirect
+        return redirect()->route('dashboard.periodlist');
     }
 }

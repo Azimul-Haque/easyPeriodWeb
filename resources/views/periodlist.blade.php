@@ -77,7 +77,30 @@
                                         });
                                     </script>
                                   {{-- edit modal--}}
-                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                  {{-- delete modal--}}
+                                  <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal{{ $period->id }}" data-backdrop="static"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                  <!-- Trigger the modal with a button -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal{{ $period->id }}" role="dialog">
+                                      <div class="modal-dialog modal-md">
+                                        <div class="modal-content">
+                                          <div class="modal-header modal-header-danger">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Delete confirmation</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            Delete your period between <b>{{ date('F d, Y', strtotime($period->start)) }}-{{ date('F d, Y', strtotime($period->end)) }}</b>?
+                                          </div>
+                                          <div class="modal-footer">
+                                            {!! Form::model($period, ['route' => ['dashboard.destroy', $period->id], 'method' => 'DELETE']) !!}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            {!! Form::close() !!}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {{-- delete modal--}}
                             </td>
                         </tr>
                         @endforeach

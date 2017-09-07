@@ -195,6 +195,17 @@ ul.errorlist > li {
     background-color: #428bca;
 }
 
+.modal-header-danger {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #dd4b39;
+}
+
 .margin-top {
     margin-top: 20px;
+}
+
+.center{
+    margin: auto !important;
 }
