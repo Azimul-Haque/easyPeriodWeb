@@ -209,3 +209,13 @@ ul.errorlist > li {
 .center{
     margin: auto !important;
 }
+
+.bodyh1 {
+    color: #FF0505;
+    text-shadow: 3px 0px 4px #000000;
+    font-size: 50px;
+}
+.bodywell {
+    background: rgba(0,30,255,0.4) !important;
+    color: #FFFFFF;
+}

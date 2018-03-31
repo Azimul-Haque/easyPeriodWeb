@@ -13,4 +13,6 @@ class Period extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    //protected $primaryKey = 'uniquekey';
 }

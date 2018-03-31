@@ -101,6 +101,17 @@ class PeriodController extends Controller
         $period->start = $request->start;
         $period->end = $request->end.' 23:59:00';
         $period->description = $request->description;
+        
+        // get the unique key...
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+        for ($i=0; $i < 10; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max-1)];
+        }
+        $period->uniquekey = $token;
 
         $period->save();
 
