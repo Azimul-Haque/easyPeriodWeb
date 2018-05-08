@@ -101,6 +101,7 @@ class PeriodController extends Controller
         $period->start = $request->start;
         $period->end = $request->end.' 23:59:00';
         $period->description = $request->description;
+        $period->email = Auth::user()->email;
         
         // get the unique key...
         $token = "";
@@ -161,8 +162,7 @@ class PeriodController extends Controller
 
         //store to DB
         $period = Period::find($id);
-
-        $period->user_id = Auth::user()->id;
+        
         $period->start = $request->start;
         $period->end = $request->end.' 23:59:00';
         $period->description = $request->description;

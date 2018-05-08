@@ -19,6 +19,7 @@ class CreatePeriodsTable extends Migration
         $table->datetime('start')->unique();
         $table->datetime('end');
         $table->text('description');
+        $table->string('email');
         $table->string('uniquekey')->unique();
         $table->timestamps();
       });
