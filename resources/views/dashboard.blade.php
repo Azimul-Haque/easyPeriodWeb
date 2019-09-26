@@ -28,9 +28,9 @@
                 <div class="panel-body">
                     {!! Form::open(['route' => 'dashboard.store', 'method' => 'POST']) !!}
                         <div class="input-group input-daterange">
-                            {!! Form::text('start', '', ['id' => 'datepicker1', 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'']) !!}
+                            {!! Form::text('start', '', ['id' => 'datepicker1', 'placeholder'=>'Start', 'class' => 'form-control', 'required'=>'', 'readonly' => '']) !!}
                             <div class="input-group-addon">to</div>
-                            {!! Form::text('end', '', ['id' => 'datepicker2', 'placeholder'=>'End', 'class' => 'form-control', 'required'=>'']) !!}
+                            {!! Form::text('end', '', ['id' => 'datepicker2', 'placeholder'=>'End', 'class' => 'form-control', 'required'=>'', 'readonly' => '']) !!}
                         </div><br/>
                         {!! Form::text('description', '', ['placeholder'=>'Description (Optional)', 'class' => 'form-control']) !!}<br/>
                         <button type="submit" class="btn btn-flat btn-success btn-block">Save</button>
